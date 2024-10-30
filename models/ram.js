@@ -11,11 +11,11 @@ const RAMSchema = new Schema({
         type: String,
         require: true
     },
-    "Avg Multicore RW": {
+    Multicore_RW: {
         type: String,
         require: true
     },
-    "Avg SingleCore RW": {
+    Singlecore_RW: {
         type: String,
         require: true
     },
