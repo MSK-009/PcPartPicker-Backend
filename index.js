@@ -14,6 +14,8 @@ app.use(express.json())
 // Available Routes
 app.use('/api/processor', require('./routes/processor'));
 app.use('/api/psu', require('./routes/psu'))
+app.use('/api/gpu', require('./routes/gpu'))
+app.use('/api/ram', require('./routes/ram'))
 
 
 
