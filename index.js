@@ -17,6 +17,7 @@ app.use('/api/psu', require('./routes/psu'))
 app.use('/api/gpu', require('./routes/gpu'))
 app.use('/api/ram', require('./routes/ram'))
 app.use('/api/ssd', require('./routes/ssd'))
+app.use('/api/case', require('./routes/case'))
 
 
 
