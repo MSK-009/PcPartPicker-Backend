@@ -11,11 +11,11 @@ const CPUSchema = new Schema({
         type: String,
         require: true
     },
-    base_clock: {
+    Base_clock: {
         type: String,
         require: true
     },
-    turbo_clock: {
+    Turbo_clock: {
         type: String,
         require: true
     },
@@ -23,11 +23,15 @@ const CPUSchema = new Schema({
         type: String,
         require: true
     },
-    threads: {
+    Threads: {
         type: String,
         require: true
     },
     Price: {
+        type: String,
+        require: true
+    },
+    Released: {
         type: String,
         require: true
     }

@@ -27,10 +27,7 @@ const GPUSchema = new Schema({
         type: String,
         require: true
     },
-    Manufacturer: {
-        type: String,
-        require: true
-    },
+  
     Image: {
         type: String,
         require: true

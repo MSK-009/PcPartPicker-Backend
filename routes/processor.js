@@ -1,29 +1,27 @@
 const express = require('express')
-const Processor = require('../models/Processor')
+const Processor = require('../models/processor')
 const router = express.Router()
 
-
-// ROUTE 1: 
-router.post('/getprocessor/:page', async (req, res) => {
+router.post('/getprocessors/:page', async (req, res) => {
     try {
-        const user = await Processor.find({ CPU_name: { $regex: req.body.search, $options: "i" }}).skip((req.params.page - 1 )* 10).limit(req.body.pageSize)
-        res.send(user)
+        const { pageSize, search, sort, order } = req.body;
+
+        const searchPattern = String(search || '');
+        const sortOptions = sort ? { [sort]: order === 'asc' ? 1 : -1 } : {};
+
+        const result = await Processor.find({ CPU_name: { $regex: searchPattern, $options: 'i' } })
+            .sort(sortOptions)
+            .skip((req.params.page - 1) * pageSize)
+            .limit(pageSize);
+        
+        const totalLength = await Processor.countDocuments({ CPU_name: { $regex: searchPattern, $options: 'i' } });
+        
+        res.json({ result, totalLength })
+
     } catch (error) {
         console.error(error.message)
-        res.status(500).send("Internal Server error occured")
+        res.status(500).send("Internal Server error occurred")
     }
 })
-
-
-router.post('/getallprocessors/:page', async (req, res) => {
-    try {
-        const user = await Processor.find().skip((req.params.page - 1 )* 10).limit(req.body.pageSize)
-        res.send(user)
-    } catch (error) {
-        console.error(error.message)
-        res.status(500).send("Internal Server error occured")
-    }
-})
-
 
 module.exports = router
