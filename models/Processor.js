@@ -38,4 +38,4 @@ const CPUSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('processor', CPUSchema)
+module.exports = mongoose.model('processors', CPUSchema)
