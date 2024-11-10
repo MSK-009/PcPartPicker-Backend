@@ -15,7 +15,7 @@ router.post('/getmobo/:page', async (req, res) => {
             .skip((req.params.page - 1) * pageSize)
             .limit(pageSize);
         
-        const totalLength = await Motherboard.countDocuments({ GPU_name: { $regex: searchPattern, $options: 'i' } });
+        const totalLength = await Motherboard.countDocuments({ Chipset: { $regex: searchPattern, $options: 'i' } });
 
         
         res.json( { result, totalLength } )
